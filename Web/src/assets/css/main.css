@@ -1,0 +1,150 @@
+body {
+  background: #fff;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.m-chatBox {
+  background: #f8f8f8;
+  max-width: 600px;
+  border: 1px solid #ddd;
+}
+
+.m-chatBox .header {
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+.m-chatBox .box {
+  height: 400px;
+  overflow: scroll;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  background: #fff;
+}
+
+.m-chatBox .box ul {
+  display: flex;
+  flex-direction: column;
+}
+.m-chatBox .box li.my {
+  text-align: right;
+}
+.m-chatBox .box .time {
+  font-size: 12px;
+  text-align: center;
+  color: #999;
+  margin-bottom: 5px;
+}
+.m-chatBox .box .name {
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #999;
+}
+.m-chatBox .box .message{
+  background: #eee;
+  display: inline-block;
+  max-width: 60%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 7px 10px;
+  font-size: 14px;
+}
+/* 系统通知 */
+.m-chatBox .box li.sys .name {
+  color: red;
+}
+.m-chatBox .box li.sys .message {
+  border: 1px solid red;
+  background: #fff;
+}
+
+/* footer */
+.m-chatBox .footer {
+  padding-bottom: 20px;
+  overflow: hidden;
+}
+.m-chatBox .footer .text {
+  padding: 20px;
+  height: 60px;
+  background: #fff;
+  margin-bottom: 20px;
+}
+.m-chatBox .footer textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 16px;
+}
+.m-chatBox .footer .enter {
+  background: #666;
+  color: #fff;
+  width: 100px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+.m-chatBox .footer .enter:hover {
+  background: #333;
+}
+
+/* 登录页面 */
+.m-login {
+  visibility: hidden;
+  visibility: visible;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-login .box {
+  background: #fff;
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.m-login .input {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.m-login .input input {
+  border: none;
+  display: block;
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.m-login .btn {
+  width: 100px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.m-login .btn:hover {
+  background: #000;
+}

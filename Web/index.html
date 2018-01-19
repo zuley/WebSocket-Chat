@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebSocket 聊天室</title>
+</head>
+<body>
+
+<div class="m-chatBox">
+  <div class="header">
+    <ul>
+      <li>当前在线人数：<span id="js-conut">X</span>人</li>
+    </ul>
+  </div>
+  <div class="box">
+    <ul id="js-messageBox"></ul>
+  </div>
+  <div class="footer">
+    <div class="text"><textarea id="js-text"></textarea></div>
+    <div class="enter" id="js-enter">发送信息</div>
+  </div>
+</div>
+
+<div class="m-login" id="js-login">
+  <div class="box">
+    <div class="input"><input type="text" id="js-loginName" placeholder="请输入用户名"></div>
+    <div class="btn" id="js-loginBtn">LOGIN</div>
+  </div>
+</div>
+
+<script src="./src/main.js"></script>
+</body>
+</html>
