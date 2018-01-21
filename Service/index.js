@@ -23,7 +23,8 @@ io.on('connection', function (socket) {
       // 发送进入房间的通知
       io.emit('sys', {
         text: socket.nickName + ' 进入了房间',
-        count: users.length
+        count: users.length,
+        users: users
       })
       // 发送登录成功的通知
       socket.emit('login', {
@@ -44,7 +45,8 @@ io.on('connection', function (socket) {
     // 离开房间发送通知
     io.emit('sys', {
       text: socket.nickName + ' 离开了房间',
-      count: users.length
+      count: users.length,
+      users, users
     })
     console.log(socket.nickName + '离开了房间')
     console.log('当前用户', users)

@@ -1,5 +1,6 @@
 body {
   background: #fff;
+  color: #666;
 }
 ul {
   margin: 0;
@@ -8,9 +9,13 @@ ul {
 }
 
 .m-chatBox {
+  margin: 0 auto;
   background: #f8f8f8;
   max-width: 600px;
   border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  display: flex;
 }
 
 .m-chatBox .header {
@@ -18,17 +23,63 @@ ul {
   padding: 20px;
 }
 
+/* 侧边 */
+.m-chatBox .sider {
+  width: 200px;
+  border-right: 1px solid #eee;
+}
+
+.m-chatBox .sider .title{
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  line-height: 60px;
+  font-weight: normal;
+}
+
+.m-chatBox .sider dl {
+  margin: 0;
+  line-height: 40px;
+  color: #333;
+  font-size: 12px;
+}
+.m-chatBox .sider dt {
+  border-bottom: 1px solid #eee;
+  line-height: 30px;
+  padding: 0 10px;
+}
+.m-chatBox .sider dl dd {
+  color: green;
+  font-size: 16px;
+  line-height: 30px;
+  margin: 0;
+}
+.m-chatBox .sider dl dd li {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  padding: 0 10px;
+}
+
+/* main */
 .m-chatBox .box {
   height: 400px;
   overflow: scroll;
   border-bottom: 1px solid #ddd;
   padding: 20px;
   background: #fff;
-}
-
-.m-chatBox .box ul {
+  flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.m-chatBox .box .list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.m-chatBox .box ul {
+  overflow: scroll;
 }
 .m-chatBox .box li.my {
   text-align: right;
@@ -64,14 +115,14 @@ ul {
 
 /* footer */
 .m-chatBox .footer {
-  padding-bottom: 20px;
+  border-top: 1px solid #eee;
+  margin: 0 -20px;
   overflow: hidden;
 }
 .m-chatBox .footer .text {
   padding: 20px;
   height: 60px;
   background: #fff;
-  margin-bottom: 20px;
 }
 .m-chatBox .footer textarea {
   width: 100%;
@@ -95,6 +146,14 @@ ul {
 }
 .m-chatBox .footer .enter:hover {
   background: #333;
+}
+.m-chatBox .mate {
+  text-align: center;
+  line-height: 25px;
+  background: #EEE;
+  margin: 0 -20px;
+  font-size: 12px;
+  display: none;
 }
 
 /* 登录页面 */
@@ -147,4 +206,53 @@ ul {
 }
 .m-login .btn:hover {
   background: #000;
+}
+
+/* 移动端 */
+@media screen and (max-width: 750px) {
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
+  .m-chatBox {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+  .m-chatBox .sider{
+    position: absolute;
+    left: -250px;
+    top: 0;
+    bottom: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    background: #f8f8f8;
+    transition: left ease .3s;
+    z-index: 1;
+  }
+  .m-chatBox .mate {
+    display: block;
+  }
+  .m-chatBox .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0; background: rgba(0, 0, 0, .3);
+    z-index: 0;
+    display: none;
+  }
+  .m-chatBox.open .sider {
+    left: 0;
+  }
+  .m-chatBox.open .bg {
+    display: block;
+  }
+  .m-chatBox .box {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .m-login .box {
+    margin: 20px;
+  }
 }

@@ -8,18 +8,24 @@
 </head>
 <body>
 
-<div class="m-chatBox">
-  <div class="header">
-    <ul>
-      <li>当前在线人数：<span id="js-conut">X</span>人</li>
-    </ul>
+<div class="m-chatBox" id="js-chatBox">
+  <div class="bg" id="js-bg"></div>
+  <div class="sider">
+    <h3 class="title">当前在线人数：<span id="js-conut">X</span>人</h3>
+    <dl>
+      <dt>在线列表</dt>
+      <dd><ul id="js-userList"></ul></dd>
+    </dl>
   </div>
   <div class="box">
-    <ul id="js-messageBox"></ul>
-  </div>
-  <div class="footer">
-    <div class="text"><textarea id="js-text"></textarea></div>
-    <div class="enter" id="js-enter">发送信息</div>
+    <div class="list">
+      <ul id="js-messageBox"></ul>
+    </div>
+    <div class="mate" id="js-openBtn">当前在线：<span id="js-conut2">X</span>人。点击打开在线列表</div>
+    <div class="footer">
+      <div class="text"><textarea id="js-text"></textarea></div>
+      <div class="enter" id="js-enter">发送信息</div>
+    </div>
   </div>
 </div>
 

@@ -3,10 +3,16 @@ import io from './assets/js/socket.io'
 
 let oEnter = document.getElementById('js-enter')
 let oCount = document.getElementById('js-conut')
+let oCount2 = document.getElementById('js-conut2')
 let oLogin = document.getElementById('js-login')
 let oLoginBtn = document.getElementById('js-loginBtn')
-let socket = io('ws://47.91.235.153:3000')
+let oOpenBton = document.getElementById('js-openBtn')
+let oBg = document.getElementById('js-bg')
+let oChatBox = document.getElementById('js-chatBox')
+// let socket = io('ws://47.91.235.153:3000')
+let socket = io('ws://localhost:3000')
 let oMessageBox = document.getElementById('js-messageBox')
+let oUserBox = document.getElementById('js-userList')
 let loginStatus = false
 let nickName = ''
 
@@ -27,11 +33,17 @@ socket.on('login', function (data) {
 
 // 系统通知
 socket.on('sys', function (data) {
-  oCount.innerHTML = data.count
+  oCount.innerHTML = oCount2.innerHTML = data.count
   oMessageBox.innerHTML += `<li class="sys">
     <div class="name">系统通知</div>
     <div class="message">${data.text}</div>
   </li>`
+
+  let sUser = ''
+  data.users.forEach(el => {
+    sUser += `<li>${el}</li>`
+  });
+  oUserBox.innerHTML = sUser
 })
 
 // 消息
@@ -40,6 +52,7 @@ socket.on('message', function (data) {
     <div class="name">${data.name}</div>
     <div class="message">${data.text}</div>
   </li>`
+  oMessageBox.scrollTop = oMessageBox.scrollHeight
 })
 
 // 发送消息
@@ -58,6 +71,7 @@ oEnter.addEventListener('click', function () {
     <div class="message">${sText}</div>
   </li>`
   oText.value = ''
+  oMessageBox.scrollTop = oMessageBox.scrollHeight
 })
 
 // 登录
@@ -72,4 +86,13 @@ oLoginBtn.addEventListener('click', function () {
       name: nickName
     })
   }
+})
+
+// 打开用户列表
+oOpenBton.addEventListener('click', function () {
+  oChatBox.classList.toggle('open')
+})
+// 关闭用户列表
+oBg.addEventListener('click', function () {
+  oChatBox.classList.remove('open')
 })
