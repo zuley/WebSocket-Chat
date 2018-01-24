@@ -1,20 +1,20 @@
 import './assets/css/main.css';
 import io from './assets/js/socket.io'
 
-let oEnter = document.getElementById('js-enter')
-let oCount = document.getElementById('js-conut')
-let oCount2 = document.getElementById('js-conut2')
-let oLogin = document.getElementById('js-login')
-let oLoginBtn = document.getElementById('js-loginBtn')
-let oOpenBton = document.getElementById('js-openBtn')
-let oBg = document.getElementById('js-bg')
-let oChatBox = document.getElementById('js-chatBox')
-// let socket = io('ws://47.91.235.153:3000')
-let socket = io('ws://localhost:3000')
-let oMessageBox = document.getElementById('js-messageBox')
-let oUserBox = document.getElementById('js-userList')
-let loginStatus = false
-let nickName = ''
+let oEnter = document.getElementById('js-enter')              // 发送消息按钮
+let oCount = document.getElementById('js-conut')              // 在线人数
+let oCount2 = document.getElementById('js-conut2')            // 在线人数
+let oLogin = document.getElementById('js-login')              // 登录弹窗
+let oLoginBtn = document.getElementById('js-loginBtn')        // 登录按钮
+let oOpenBton = document.getElementById('js-openBtn')         // 打开用户列表的按钮
+let oBg = document.getElementById('js-bg')                    // 遮罩
+let oChatBox = document.getElementById('js-chatBox')          // 聊天窗口
+let socket = io('ws://47.91.235.153:3000')                 // ws 链接
+// let socket = io('ws://localhost:3000')                        // ws 链接
+let oMessageBox = document.getElementById('js-messageBox')    // 消息窗口
+let oUserBox = document.getElementById('js-userList')         // 用户列表
+let loginStatus = false                                       // 登录状态
+let nickName = ''                                             // 当前登录用户名
 
 // 连接服务器
 socket.on('connect', function () {
@@ -56,7 +56,7 @@ socket.on('message', function (data) {
 })
 
 // 发送消息
-oEnter.addEventListener('click', function () {
+function sendMessage () {
   let oText = document.getElementById('js-text')
   let sText = oText.value
   if (sText === '') {
@@ -72,10 +72,16 @@ oEnter.addEventListener('click', function () {
   </li>`
   oText.value = ''
   oMessageBox.scrollTop = oMessageBox.scrollHeight
+}
+oEnter.addEventListener('click', sendMessage)
+document.getElementById('js-text').addEventListener('keydown', function () {
+  if (event.key === 'Enter') {
+    sendMessage()
+  }
 })
 
 // 登录
-oLoginBtn.addEventListener('click', function () {
+function userLogin () {
   let loginName = document.getElementById('js-loginName').value
   if (loginName === '') {
     alert('你必须输入用户名')
@@ -85,6 +91,12 @@ oLoginBtn.addEventListener('click', function () {
     socket.emit('login', {
       name: nickName
     })
+  }
+}
+oLoginBtn.addEventListener('click', userLogin)
+document.getElementById('js-loginName').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    userLogin()
   }
 })
 
