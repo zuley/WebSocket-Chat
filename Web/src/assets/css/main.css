@@ -54,8 +54,14 @@ ul {
   line-height: 30px;
   margin: 0;
 }
+.m-chatBox .sider ul {
+  max-height: 300px;
+  overflow-y: scroll;
+}
 .m-chatBox .sider dl dd li {
   border-bottom: 1px solid #eee;
+  height: 30px;
+  overflow: hidden;
   background: #fff;
   padding: 0 10px;
 }
@@ -99,10 +105,15 @@ ul {
   background: #eee;
   display: inline-block;
   max-width: 60%;
+  max-height: 300px;
+  overflow-y: scroll;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 7px 10px;
   font-size: 14px;
+}
+.m-chatBox .box .message img {
+  max-width: 100%;
 }
 /* 系统通知 */
 .m-chatBox .box li.sys .name {

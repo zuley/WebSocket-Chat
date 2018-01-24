@@ -16,6 +16,10 @@ let oUserBox = document.getElementById('js-userList')         // 用户列表
 let loginStatus = false                                       // 登录状态
 let nickName = ''                                             // 当前登录用户名
 
+function delHtmlTag (str) {
+  return str.replace(/<[^>]+>/g,"");
+}
+
 // 连接服务器
 socket.on('connect', function () {
   console.log('成功连接服务器')
@@ -36,7 +40,7 @@ socket.on('sys', function (data) {
   oCount.innerHTML = oCount2.innerHTML = data.count
   oMessageBox.innerHTML += `<li class="sys">
     <div class="name">系统通知</div>
-    <div class="message">${data.text}</div>
+    <div class="message">${delHtmlTag(data.text)}</div>
   </li>`
 
   let sUser = ''
@@ -49,8 +53,8 @@ socket.on('sys', function (data) {
 // 消息
 socket.on('message', function (data) {
   oMessageBox.innerHTML += `<li>
-    <div class="name">${data.name}</div>
-    <div class="message">${data.text}</div>
+    <div class="name">${delHtmlTag(data.name)}</div>
+    <div class="message">${delHtmlTag(data.text)}</div>
   </li>`
   oMessageBox.scrollTop = oMessageBox.scrollHeight
 })
@@ -58,7 +62,7 @@ socket.on('message', function (data) {
 // 发送消息
 function sendMessage () {
   let oText = document.getElementById('js-text')
-  let sText = oText.value
+  let sText = delHtmlTag(oText.value)
   if (sText === '') {
     return false
   }
@@ -82,7 +86,7 @@ document.getElementById('js-text').addEventListener('keydown', function () {
 
 // 登录
 function userLogin () {
-  let loginName = document.getElementById('js-loginName').value
+  let loginName = delHtmlTag(document.getElementById('js-loginName').value)
   if (loginName === '') {
     alert('你必须输入用户名')
   } else {
