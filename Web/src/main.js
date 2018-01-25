@@ -16,6 +16,7 @@ let oUserBox = document.getElementById('js-userList')         // 用户列表
 let loginStatus = false                                       // 登录状态
 let nickName = ''                                             // 当前登录用户名
 
+// 清除HTML标签
 function delHtmlTag (str) {
   return str.replace(/<[^>]+>/g,"");
 }
@@ -64,6 +65,10 @@ function sendMessage () {
   let oText = document.getElementById('js-text')
   let sText = delHtmlTag(oText.value)
   if (sText === '') {
+    alert('不能为空')
+    return false
+  } else if (sText.length > 30) {
+    alert('内容不能超过30个字')
     return false
   }
   socket.emit('message', {
@@ -89,6 +94,8 @@ function userLogin () {
   let loginName = delHtmlTag(document.getElementById('js-loginName').value)
   if (loginName === '') {
     alert('你必须输入用户名')
+  } else if (loginName.length > 10) {
+    alert('用户名不能超过十个字符')
   } else {
     nickName = loginName
     // 登录

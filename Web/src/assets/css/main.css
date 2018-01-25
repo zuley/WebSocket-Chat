@@ -11,7 +11,7 @@ ul {
 .m-chatBox {
   margin: 0 auto;
   background: #f8f8f8;
-  max-width: 600px;
+  max-width: 800px;
   border: 1px solid #ddd;
   box-shadow: 0 0 5px rgba(0, 0, 0, .1);
   border-radius: 2px;
@@ -55,7 +55,7 @@ ul {
   margin: 0;
 }
 .m-chatBox .sider ul {
-  max-height: 300px;
+  max-height: 500px;
   overflow-y: scroll;
 }
 .m-chatBox .sider dl dd li {
@@ -68,8 +68,8 @@ ul {
 
 /* main */
 .m-chatBox .box {
-  height: 400px;
-  overflow: scroll;
+  height: 600px;
+  overflow-y: scroll;
   border-bottom: 1px solid #ddd;
   padding: 20px;
   background: #fff;
