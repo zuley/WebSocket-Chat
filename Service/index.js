@@ -53,6 +53,6 @@ io.on('connection', function (socket) {
   })
 })
 
-app.listen(3000, function () {
-  console.log('WebSocket 启用端口 on *: 3000')
+app.listen(3001, function () {
+  console.log('WebSocket 启用端口 on *: 3001')
 })

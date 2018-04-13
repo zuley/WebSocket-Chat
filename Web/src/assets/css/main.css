@@ -220,12 +220,23 @@ ul {
   background: #000;
 }
 
+.m-info {
+  text-align: center;
+  font-size: 12px;
+  line-height: 30px;
+}
+.m-info, .m-info a {
+  color: #ccc;
+  text-decoration: none;
+}
+
 /* 移动端 */
 @media screen and (max-width: 750px) {
   html, body {
     margin: 0;
     height: 100%;
   }
+  .m-info{ display: none; }
   .m-chatBox {
     display: block;
     position: relative;
